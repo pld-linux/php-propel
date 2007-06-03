@@ -1,4 +1,5 @@
 Summary:	Object persistence and query service for PHP5
+Summary(pl.UTF-8):	Usługa przechowywania i odpytywania obiektów dla PHP5
 Name:		php-propel
 Version:	1.2.1
 Release:	0.1
@@ -17,7 +18,14 @@ BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 Propel is an object persistence (object relational mapping) tool for
 PHP5 based on Apache Torque. Propel generates PHP classes and SQL
 definition files for your data model and provides a runtime
-environment that transparently handles database operations
+environment that transparently handles database operations.
+
+%description -l pl.UTF-8
+Propel to narzędzie do przechowywania obiektów (odwzorowań
+obiektowo-relacyjnych) dla PHP5 oparty na Apache Torque. Propel
+generuje klasy PHP i pliki definicji SQL dla danego modelu danych oraz
+zapewnia środowisko uruchomieniowe obsługujące w sposób przezroczysty
+operacje na bazie danych.
 
 %prep
 %setup -q -n propel-%{version}
