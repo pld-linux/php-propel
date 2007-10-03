@@ -3,7 +3,7 @@ Summary(pl.UTF-8):	Usługa przechowywania i odpytywania obiektów dla PHP5
 Name:		php-propel
 Version:	1.3.0
 %define		_rc	beta2
-Release:	0.%{rc}.1
+Release:	0.%{_rc}.1
 License:	LGPL
 Group:		Development/Languages/PHP
 Source0:	http://propel.tigris.org/files/documents/1009/36727/propel-%{version}%{_rc}.tar.gz
