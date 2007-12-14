@@ -2,12 +2,12 @@ Summary:	Object persistence and query service for PHP5
 Summary(pl.UTF-8):	Usługa przechowywania i odpytywania obiektów dla PHP5
 Name:		php-propel
 Version:	1.3.0
-%define		_rc	beta2
+%define		_rc	beta3
 Release:	0.%{_rc}.1
 License:	LGPL
 Group:		Development/Languages/PHP
-Source0:	http://propel.tigris.org/files/documents/1009/36727/propel-%{version}%{_rc}.tar.gz
-# Source0-md5:	d5dceed67d512f08519e52134d996700
+Source0:	http://propel.tigris.org/files/documents/1009/40870/propel-%{version}%{_rc}.tar.gz
+# Source0-md5:	111677186e623c56a1f7c548a55258d1
 URL:		http://propel.tigris.org/
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	php-creole
