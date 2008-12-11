@@ -30,13 +30,17 @@ zapewnia środowisko uruchomieniowe obsługujące w sposób przezroczysty
 operacje na bazie danych.
 
 %package -n propel-gen
-Summary:	propel-gen
+Summary:	propel-gen - DDL files generator
+Summary(pl.UTF-8):	propel-gen - generator plików DDL
 Group:		Development/Languages/PHP
 Requires:	phing
 Requires:	php-xsl
 
 %description -n propel-gen
 A generator that creates SQL definition files (DDL).
+
+%description -n propel-gen -l pl.UTF-8
+Generator tworzący pliki definicji SQL (DDL).
 
 %prep
 %setup -qc -a1
