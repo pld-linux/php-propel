@@ -1,16 +1,17 @@
 Summary:	Object persistence and query service for PHP5
 Summary(pl.UTF-8):	Usługa przechowywania i odpytywania obiektów dla PHP5
 Name:		php-propel
-Version:	1.3.0
+Version:	1.4.1
 Release:	1
 License:	LGPL
 Group:		Development/Languages/PHP
 Source0:	http://pear.phpdb.org/get/propel_runtime-%{version}.tgz
-# Source0-md5:	d2c888e0ce21f776d3ad932ec9cd47e7
+# Source0-md5:	6b5bc4b88f9a24068ef4176bdee77435
 Source1:	http://pear.phpdb.org/get/propel_generator-%{version}.tgz
-# Source1-md5:	18dd61f9a11145424c2ca3a3f54989bb
+# Source1-md5:	d7bfb462fd94648c80b9f98bd9f192c7
 URL:		http://propel.phpdb.org/
 BuildRequires:	rpmbuild(macros) >= 1.300
+Requires:	php-common >= 4:5.2.8-3
 Requires:	php-creole
 Requires:	php-pear
 BuildArch:	noarch
@@ -46,48 +47,47 @@ Generator tworzący pliki definicji SQL (DDL).
 %setup -qc -a1
 mv propel_generator-%{version} generator
 mv propel_runtime-%{version} runtime
-%{__sed} -i -e 's,@DATA-DIR@,%{php_pear_dir}/data,g' generator/pear/pear-propel-gen
+%{__sed} -i -e 's,@DATA-DIR@,%{php_data_dir}/data,g' generator/pear/pear-propel-gen
 cat <<'EOF'> generator/pear/pear-propel-gen.sh
 #!/bin/sh
-exec phing -f /usr/share/pear/data/propel_generator/pear-build.xml -Dproject.dir=$*
+exec phing -f %{php_pear_dir}/data/propel_generator/pear-build.xml -Dproject.dir=$*
 EOF
 
 %install
 rm -rf $RPM_BUILD_ROOT
-install -d $RPM_BUILD_ROOT{%{php_pear_dir}/propel,%{_bindir}}
-cp -a runtime/* $RPM_BUILD_ROOT%{php_pear_dir}/propel
+install -d $RPM_BUILD_ROOT{%{php_data_dir}/propel,%{_bindir}}
+cp -a runtime/* $RPM_BUILD_ROOT%{php_data_dir}/propel
 
-cp -a generator/engine $RPM_BUILD_ROOT%{php_pear_dir}/propel
-cp -a generator/phing $RPM_BUILD_ROOT%{php_pear_dir}/propel
+cp -a generator/engine $RPM_BUILD_ROOT%{php_data_dir}/propel
+cp -a generator/phing $RPM_BUILD_ROOT%{php_data_dir}/propel
 install generator/pear/pear-propel-gen.sh $RPM_BUILD_ROOT%{_bindir}/propel-gen
-install -d $RPM_BUILD_ROOT%{php_pear_dir}/data/propel_generator
-cp -a generator/{projects,resources,*.xml,*.properties} $RPM_BUILD_ROOT%{php_pear_dir}/data/propel_generator
+install -d $RPM_BUILD_ROOT%{php_data_dir}/data/propel_generator
+cp -a generator/{resources,*.xml,*.properties} $RPM_BUILD_ROOT%{php_data_dir}/data/propel_generator
 
 %clean
 rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
-%dir %{php_pear_dir}/propel
-%{php_pear_dir}/propel/Propel.php
-%{php_pear_dir}/propel/PropelException.php
-%{php_pear_dir}/propel/adapter
-%{php_pear_dir}/propel/logger
-%{php_pear_dir}/propel/map
-%{php_pear_dir}/propel/om
-%{php_pear_dir}/propel/util
-%{php_pear_dir}/propel/validator
+%dir %{php_data_dir}/propel
+%{php_data_dir}/propel/Propel.php
+%{php_data_dir}/propel/PropelException.php
+%{php_data_dir}/propel/adapter
+%{php_data_dir}/propel/logger
+%{php_data_dir}/propel/map
+%{php_data_dir}/propel/om
+%{php_data_dir}/propel/util
+%{php_data_dir}/propel/validator
 
 %files -n propel-gen
 %defattr(644,root,root,755)
 %attr(755,root,root) %{_bindir}/propel-gen
-%{php_pear_dir}/propel/engine
-%{php_pear_dir}/propel/phing
+%{php_data_dir}/propel/engine
+%{php_data_dir}/propel/phing
 
-%dir %{php_pear_dir}/data/propel_generator
-%{php_pear_dir}/data/propel_generator/projects
-%{php_pear_dir}/data/propel_generator/resources
-%{php_pear_dir}/data/propel_generator/build-propel.xml
-%{php_pear_dir}/data/propel_generator/build.properties
-%{php_pear_dir}/data/propel_generator/default.properties
-%{php_pear_dir}/data/propel_generator/pear-build.xml
+%dir %{php_data_dir}/data/propel_generator
+%{php_data_dir}/data/propel_generator/resources
+%{php_data_dir}/data/propel_generator/build-propel.xml
+%{php_data_dir}/data/propel_generator/build.properties
+%{php_data_dir}/data/propel_generator/default.properties
+%{php_data_dir}/data/propel_generator/pear-build.xml
