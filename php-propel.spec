@@ -2,12 +2,12 @@
 Summary:	Object persistence and query service for PHP5
 Summary(pl.UTF-8):	Usługa przechowywania i odpytywania obiektów dla PHP5
 Name:		php-%{pkgname}
-Version:	1.4.1
-Release:	2
+Version:	1.4.2
+Release:	1
 License:	LGPL
 Group:		Development/Languages/PHP
 Source0:	http://files.propelorm.org/%{pkgname}-%{version}.tar.gz
-# Source0-md5:	aec7bef13252663e5ff0754582bd58f8
+# Source0-md5:	37d0c260bac544d59308e40d4b67026c
 URL:		http://www.propelorm.org/
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	php-common >= 4:5.2.8-3
