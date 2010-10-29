@@ -1,15 +1,14 @@
+%define		pkgname	propel
 Summary:	Object persistence and query service for PHP5
 Summary(pl.UTF-8):	Usługa przechowywania i odpytywania obiektów dla PHP5
-Name:		php-propel
+Name:		php-%{pkgname}
 Version:	1.4.1
-Release:	1
+Release:	2
 License:	LGPL
 Group:		Development/Languages/PHP
-Source0:	http://pear.phpdb.org/get/propel_runtime-%{version}.tgz
-# Source0-md5:	6b5bc4b88f9a24068ef4176bdee77435
-Source1:	http://pear.phpdb.org/get/propel_generator-%{version}.tgz
-# Source1-md5:	d7bfb462fd94648c80b9f98bd9f192c7
-URL:		http://propel.phpdb.org/
+Source0:	http://files.propelorm.org/%{pkgname}-%{version}.tar.gz
+# Source0-md5:	aec7bef13252663e5ff0754582bd58f8
+URL:		http://www.propelorm.org/
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	php-common >= 4:5.2.8-3
 Requires:	php-creole
@@ -44,10 +43,7 @@ A generator that creates SQL definition files (DDL).
 Generator tworzący pliki definicji SQL (DDL).
 
 %prep
-%setup -qc -a1
-mv propel_generator-%{version} generator
-mv propel_runtime-%{version} runtime
-%{__sed} -i -e 's,@DATA-DIR@,%{php_data_dir}/data,g' generator/pear/pear-propel-gen
+%setup -q -n %{pkgname}-%{version}
 cat <<'EOF'> generator/pear/pear-propel-gen.sh
 #!/bin/sh
 exec phing -f %{php_pear_dir}/data/propel_generator/pear-build.xml -Dproject.dir=$*
@@ -56,13 +52,14 @@ EOF
 %install
 rm -rf $RPM_BUILD_ROOT
 install -d $RPM_BUILD_ROOT{%{php_data_dir}/propel,%{_bindir}}
-cp -a runtime/* $RPM_BUILD_ROOT%{php_data_dir}/propel
+cp -a runtime/classes/propel/* $RPM_BUILD_ROOT%{php_data_dir}/propel
 
-cp -a generator/engine $RPM_BUILD_ROOT%{php_data_dir}/propel
-cp -a generator/phing $RPM_BUILD_ROOT%{php_data_dir}/propel
-install generator/pear/pear-propel-gen.sh $RPM_BUILD_ROOT%{_bindir}/propel-gen
+cp -a generator/classes/propel/engine $RPM_BUILD_ROOT%{php_data_dir}/propel
+cp -a generator/classes/propel/phing $RPM_BUILD_ROOT%{php_data_dir}/propel
+install -p generator/pear/pear-propel-gen.sh $RPM_BUILD_ROOT%{_bindir}/propel-gen
 install -d $RPM_BUILD_ROOT%{php_data_dir}/data/propel_generator
-cp -a generator/{resources,*.xml,*.properties} $RPM_BUILD_ROOT%{php_data_dir}/data/propel_generator
+cp -a generator/{resources,build-propel.xml,*.properties} $RPM_BUILD_ROOT%{php_data_dir}/data/propel_generator
+cp -a generator/pear/{pear-build.xml,*.properties} $RPM_BUILD_ROOT%{php_data_dir}/data/propel_generator
 
 %clean
 rm -rf $RPM_BUILD_ROOT
