@@ -3,11 +3,12 @@ Summary:	Object persistence and query service for PHP5
 Summary(pl.UTF-8):	Usługa przechowywania i odpytywania obiektów dla PHP5
 Name:		php-%{pkgname}
 Version:	1.4.2
-Release:	2
+Release:	3
 License:	LGPL
 Group:		Development/Languages/PHP
 Source0:	http://files.propelorm.org/%{pkgname}-%{version}.tar.gz
 # Source0-md5:	37d0c260bac544d59308e40d4b67026c
+Patch0:	phing-classpath.patch
 URL:		http://www.propelorm.org/
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	php-common >= 4:5.2.8-3
@@ -44,6 +45,7 @@ Generator tworzący pliki definicji SQL (DDL).
 
 %prep
 %setup -q -n %{pkgname}-%{version}
+%patch0 -p1
 cat <<'EOF'> generator/pear/pear-propel-gen.sh
 #!/bin/sh
 exec phing -f %{php_data_dir}/data/propel_generator/pear-build.xml -Dproject.dir=$*
