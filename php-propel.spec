@@ -3,12 +3,12 @@ Summary:	Object persistence and query service for PHP5
 Summary(pl.UTF-8):	Usługa przechowywania i odpytywania obiektów dla PHP5
 Name:		php-%{pkgname}
 Version:	1.4.2
-Release:	3
+Release:	4
 License:	LGPL
 Group:		Development/Languages/PHP
 Source0:	http://files.propelorm.org/%{pkgname}-%{version}.tar.gz
 # Source0-md5:	37d0c260bac544d59308e40d4b67026c
-Patch0:	phing-classpath.patch
+Patch0:		phing-classpath.patch
 URL:		http://www.propelorm.org/
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	php-common >= 4:5.2.8-3
@@ -84,6 +84,8 @@ rm -rf $RPM_BUILD_ROOT
 %{php_data_dir}/propel/engine
 %{php_data_dir}/propel/phing
 
+# XXX temp fix:
+%dir %{php_data_dir}/data
 %dir %{php_data_dir}/data/propel_generator
 %{php_data_dir}/data/propel_generator/resources
 %{php_data_dir}/data/propel_generator/build-propel.xml
