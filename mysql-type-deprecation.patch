@@ -1,0 +1,14 @@
+Type=ENGINE_NAME is deprecated
+Type=ENGINE_NAME is removed in MySQL 5.5
+
+--- propel-1.4.2/generator/classes/propel/engine/builder/sql/mysql/MysqlDDLBuilder.php	2010-04-20 00:59:18.000000000 +0300
++++ propel-1.4.2/generator/classes/propel/engine/builder/sql/mysql/MysqlDDLBuilder.php	2011-05-05 19:25:08.612759788 +0300
+@@ -153,7 +153,7 @@
+ 			}
+ 		}
+ 
+-		$script .= "Type=$mysqlTableType";
++		$script .= "Engine=$mysqlTableType";
+ 
+ 		$dbVendorSpecific = $table->getDatabase()->getVendorInfoForType($databaseType);
+ 		$tableVendorSpecific = $table->getVendorInfoForType($databaseType);
