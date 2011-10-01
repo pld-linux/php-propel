@@ -1,9 +1,10 @@
 %define		pkgname	propel
+%define		php_min_version 5.2.8-3
 Summary:	Object persistence and query service for PHP5
 Summary(pl.UTF-8):	Usługa przechowywania i odpytywania obiektów dla PHP5
 Name:		php-%{pkgname}
 Version:	1.4.2
-Release:	6
+Release:	7
 License:	LGPL v3
 Group:		Development/Languages/PHP
 Source0:	http://files.propelorm.org/%{pkgname}-%{version}.tar.gz
@@ -12,9 +13,12 @@ Patch0:		phing-classpath.patch
 Patch1:		mysql-type-deprecation.patch
 URL:		http://www.propelorm.org/
 BuildRequires:	rpmbuild(macros) >= 1.300
-Requires:	php-common >= 4:5.2.8-3
+Requires:	php-common >= 4:%{php_min_version}
+Requires:	php-date
+Requires:	php-pcre
 Requires:	php-pdo
 Requires:	php-pear
+Requires:	php-spl
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
 
@@ -35,7 +39,13 @@ operacje na bazie danych.
 Summary:	propel-gen - DDL files generator
 Summary(pl.UTF-8):	propel-gen - generator plików DDL
 Group:		Development/Languages/PHP
-Requires:	phing
+Requires:	php-common >= 4:%{php_min_version}
+Requires:	php-date
+Requires:	php-dom
+Requires:	php-pcre
+Requires:	php-phing >= 2.3.3
+Requires:	php-simplexml
+Requires:	php-tokenizer
 Requires:	php-xsl
 
 %description -n propel-gen
@@ -70,6 +80,7 @@ rm -rf $RPM_BUILD_ROOT
 
 %files
 %defattr(644,root,root,755)
+%doc WHATS_NEW CHANGELOG
 %dir %{php_data_dir}/propel
 %{php_data_dir}/propel/Propel.php
 %{php_data_dir}/propel/PropelException.php
