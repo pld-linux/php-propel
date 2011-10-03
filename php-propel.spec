@@ -11,7 +11,7 @@ Source0:	http://files.propelorm.org/%{pkgname}-%{version}.tar.gz
 # Source0-md5:	37d0c260bac544d59308e40d4b67026c
 Patch0:		phing-classpath.patch
 Patch1:		mysql-type-deprecation.patch
-URL:		http://www.propelorm.org/
+URL:		http://trac.propelorm.org/wiki/Documentation/1.4
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	php-common >= 4:%{php_min_version}
 Requires:	php-date
