@@ -1,11 +1,10 @@
---- propel-1.4.2/generator/build-propel.xml~	2010-01-29 16:48:28.000000000 +0200
-+++ propel-1.4.2/generator/build-propel.xml	2011-01-04 15:38:57.121865260 +0200
-@@ -37,7 +37,7 @@
-   -->
+--- php-propel-1.7.1/generator/build-propel.xml~	2014-02-25 11:13:58.000000000 +0200
++++ php-propel-1.7.1/generator/build-propel.xml	2014-04-26 02:15:15.371163900 +0300
+@@ -37,6 +37,7 @@
+     -->
  
-   <path id="propelclasses">
--    <pathelement dir="${propel.home}/classes/"/>
-+    <pathelement dir="/usr/share/php"/>
-   </path>
- 
-   <taskdef
+     <path id="propelclasses">
++        <pathelement dir="/usr/share/php"/>
+         <pathelement dir="${propel.home}/lib/"/>
+         <pathelement dir="${propel.project.dir}/"/>
+     </path>
