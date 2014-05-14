@@ -4,7 +4,7 @@ Summary:	Object persistence and query service for PHP5
 Summary(pl.UTF-8):	Usługa przechowywania i odpytywania obiektów dla PHP5
 Name:		php-%{pkgname}
 Version:	1.4.2
-Release:	9
+Release:	10
 License:	LGPL v3
 Group:		Development/Languages/PHP
 Source0:	http://files.propelorm.org/%{pkgname}-%{version}.tar.gz
@@ -14,10 +14,10 @@ Patch1:		mysql-type-deprecation.patch
 URL:		http://trac.propelorm.org/wiki/Documentation/1.4
 BuildRequires:	rpmbuild(macros) >= 1.300
 Requires:	php(core) >= %{php_min_version}
+Requires:	php(date)
 Requires:	php(pcre)
 Requires:	php(pdo)
 Requires:	php(spl)
-Requires:	php-date
 Requires:	php-pear
 BuildArch:	noarch
 BuildRoot:	%{tmpdir}/%{name}-%{version}-root-%(id -u -n)
@@ -40,12 +40,12 @@ Summary:	propel-gen - DDL files generator
 Summary(pl.UTF-8):	propel-gen - generator plików DDL
 Group:		Development/Languages/PHP
 Requires:	php(core) >= %{php_min_version}
+Requires:	php(date)
 Requires:	php(dom)
 Requires:	php(pcre)
 Requires:	php(simplexml)
 Requires:	php(tokenizer)
 Requires:	php(xsl)
-Requires:	php-date
 Requires:	php-phing >= 2.3.3
 
 %description -n propel-gen
